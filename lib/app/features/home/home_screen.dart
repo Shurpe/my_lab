@@ -1,3 +1,9 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_application_1/app/app.dart';
+import 'package:flutter_application_1/di/di.dart';
+import 'package:go_router/go_router.dart';
+import 'content_card.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 

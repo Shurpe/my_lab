@@ -13,6 +13,7 @@ dependencies:
   go_router: ^16.2.4
   talker: ^5.0.1
   talker_flutter: ^5.0.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -20,5 +21,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-    assets:
-    - assets/images/ 
+  assets:
+    - assets/images/
+    - .env

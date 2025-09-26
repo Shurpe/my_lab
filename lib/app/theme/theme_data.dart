@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import 'theme_colors.dart';
+
 class AppTheme {
   static ThemeData get lightTheme {
     return ThemeData(
@@ -5,14 +8,11 @@ class AppTheme {
       scaffoldBackgroundColor: ThemeColors.white,
       colorScheme: _colorScheme,
       appBarTheme: _appBarTheme,
-      // таким же образом сюда можно добавить и темы других виджетов
     );
   }
 }
 
-final _colorScheme = ColorScheme.fromSeed(
-  seedColor: ThemeColors.accent,
-);
+final _colorScheme = ColorScheme.fromSeed(seedColor: ThemeColors.accent);
 
 final _appBarTheme = AppBarTheme(
   toolbarHeight: 50,

@@ -1,4 +1,5 @@
-extension EmptyPadding on num {
-  SizedBox get ph => SizedBox(height: toDouble());
-  SizedBox get pw => SizedBox(width: toDouble());
+import 'package:flutter/widgets.dart';
+
+extension WidgetPaddingExt on Widget {
+  Widget withPaddingAll(double value) => Padding(padding: EdgeInsets.all(value), child: this);
 }

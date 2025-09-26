@@ -1,7 +1,8 @@
+// lib/main.dart
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:get_it/get_it.dart';
-import 'package:talker_flutter/talker_flutter.dart';
+import 'package:flutter_application_1/di/di.dart';
+import 'package:flutter_application_1/название_приложения.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setupLocator();
@@ -10,6 +11,5 @@ void main() async {
     return talker.handle(details.exception, details.stack);
   };
 
-  runApp(AppName());
+  runApp(const AppName());
 }
-

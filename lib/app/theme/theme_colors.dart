@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 abstract final class ThemeColors {
   static const Color accent = Color.fromRGBO(20, 52, 78, 1);
   static const Color white = Color.fromRGBO(255, 255, 255, 1);
