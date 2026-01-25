@@ -1,4 +1,5 @@
 import 'package:flutter_application_1/app/data/dio/set_up.dart';
+import 'package:flutter_application_1/app/features/details/details_bloc.dart';
 import 'package:flutter_application_1/app/features/home/bloc/home_bloc.dart';
 import 'package:flutter_application_1/domain/repositories/content/content_repository.dart';
 import 'package:flutter_application_1/domain/repositories/content/content_repository_interface.dart';
@@ -28,5 +29,9 @@ Future<void> setupLocator() async {
   // BLoC
   getIt.registerSingleton<HomeBloc>(
     HomeBloc(getIt<ContentRepositoryInterface>()),
+  );
+  // Новый блок для экрана деталей
+  getIt.registerSingleton<DetailsBloc>(
+    DetailsBloc(getIt<ContentRepositoryInterface>()),
   );
 }

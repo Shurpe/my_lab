@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class ContentCard extends StatelessWidget {
-  final String? id;
-  final String? title;
-  final String? description;
-  final String? imageAsset;
+  final int id;
+  final String title;
+  final String description;
+  final String imageAsset;
 
   const ContentCard({
     super.key,
-    this.id,
-    this.title,
-    this.description,
-    this.imageAsset, required content,
+    required this.id,
+    required this.title,
+    required this.description,
+    required this.imageAsset,
   });
 
   @override
@@ -20,9 +20,9 @@ class ContentCard extends StatelessWidget {
     const imageSize = 100.0;
 
     return InkWell(
-         onTap: () {
-        // Если появится маршрут /content/:id — раскомментируй ниже:
-        context.push('/content/$id');
+      onTap: () {
+        // теперь открываем экран деталей
+        context.push('/details/$id');
       },
       borderRadius: BorderRadius.circular(16),
       child: SizedBox(
@@ -33,7 +33,7 @@ class ContentCard extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(16),
               child: Image.asset(
-                imageAsset ?? 'assets/test_image.jpg',
+                imageAsset,
                 height: imageSize,
                 width: imageSize,
                 fit: BoxFit.cover,
@@ -45,7 +45,7 @@ class ContentCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    title ?? 'Title',
+                    title,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.titleLarge,
@@ -53,7 +53,7 @@ class ContentCard extends StatelessWidget {
                   const SizedBox(height: 4),
                   Expanded(
                     child: Text(
-                      description ?? 'Description',
+                      description,
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.bodyMedium,

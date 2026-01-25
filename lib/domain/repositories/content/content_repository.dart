@@ -20,7 +20,7 @@ class ContentRepository implements ContentRepositoryInterface {
           title: e['title'] as String,
           author: e['userId'].toString(),
           description: e['body'] as String,
-          image: 'assets/images/test_image.jpg', // локальная заглушка
+          image: 'assets/test_image.jpg', // локальная заглушка
         );
       }).toList();
     } on DioException catch (e) {
