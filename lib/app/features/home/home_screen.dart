@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/app/features/home/bloc/home_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+
+import 'package:flutter_application_1/app/features/home/bloc/home_bloc.dart';
 import 'package:flutter_application_1/app/features/home/content_card.dart';
+import 'package:flutter_application_1/app/auth/bloc/auth_bloc.dart';
 import 'package:flutter_application_1/di/di.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -23,7 +26,24 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Главная')),
+      appBar: AppBar(
+        title: const Text('Главная'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.favorite),
+            onPressed: () {
+              context.go('/favorites');
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () {
+              context.read<AuthBloc>().add(AuthLogout());
+              context.go('/login');
+            },
+          ),
+        ],
+      ),
       body: BlocBuilder<HomeBloc, HomeState>(
         bloc: _bloc,
         builder: (context, state) {
@@ -46,7 +66,9 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             );
           } else if (state is HomeLoadFailure) {
-            return Center(child: Text('Ошибка: ${state.exception}'));
+            return Center(
+              child: Text('Ошибка: ${state.exception}'),
+            );
           } else {
             return const SizedBox.shrink();
           }

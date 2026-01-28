@@ -10,23 +10,37 @@ class ContentRepository implements ContentRepositoryInterface {
   @override
   Future<List<Content>> getContent() async {
     try {
-      // Получаем список постов (JSON массив)
+      // Пытаемся получить данные из сети
       final Response response = await dio.get('/posts');
-      final dataList = (response.data as List).cast<Map<String, dynamic>>();
-      // Преобразуем в Content
+
+      final dataList = (response.data as List)
+          .cast<Map<String, dynamic>>();
+
       return dataList.map((e) {
         return Content(
           id: e['id'] as int,
           title: e['title'] as String,
           author: e['userId'].toString(),
           description: e['body'] as String,
-          image: 'assets/test_image.jpg', // локальная заглушка
+          image: 'assets/test_image.jpg',
         );
       }).toList();
-    } on DioException catch (e) {
-      throw Exception('Ошибка сети: ${e.message}');
-    } catch (e) {
-      throw Exception('Ошибка парсинга: $e');
+    } catch (_) {
+      // ⬇️ Фолбэк: мок-данные (для стабильной работы)
+      return _mockContent();
     }
+  }
+
+  List<Content> _mockContent() {
+    return List.generate(
+      5,
+      (i) => Content(
+        id: i + 1,
+        title: 'Заголовок ${i + 1}',
+        author: 'Автор ${i + 1}',
+        description: 'Описание элемента ${i + 1}',
+        image: 'assets/test_image.jpg',
+      ),
+    );
   }
 }

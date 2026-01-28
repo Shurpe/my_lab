@@ -1,7 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_application_1/domain/repositories/content/model/content.dart';
 import 'package:flutter_application_1/domain/repositories/content/content_repository_interface.dart';
-import 'package:flutter_application_1/di/di.dart';
 
 part 'details_event.dart';
 part 'details_state.dart';

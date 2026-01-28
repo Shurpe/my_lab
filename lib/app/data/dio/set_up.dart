@@ -6,9 +6,9 @@ final Dio dio = Dio();
 
 void setUpDio() {
   dio.options.baseUrl = 'https://jsonplaceholder.typicode.com';
-  dio.options.connectTimeout = const Duration(seconds: 10);
-  dio.options.receiveTimeout = const Duration(seconds: 10);
-
+  dio.options.connectTimeout = const Duration(seconds: 60);
+  dio.options.receiveTimeout = const Duration(seconds: 60);
+  dio.options.sendTimeout = const Duration(seconds: 60);
   dio.interceptors.add(
     TalkerDioLogger(
       talker: talker,
